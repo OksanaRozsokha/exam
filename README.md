@@ -1,4 +1,4 @@
 # exam
-http://dev-geekhub-exam.pantheonsite.io/
+http://dev-exam-geekhub.pantheonsite.io/
 user: admin
 password: admin
