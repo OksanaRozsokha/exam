@@ -9,30 +9,77 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package exam
+ * @package delivery
  */
 
 get_header(); ?>
+	<section class="blog">
+		<div class="page-title">
+			<div class="container">
+				<h2 class="title-big"><?php echo get_theme_mod('title'); ?></h2>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-8">
+					<div id="primary" class="content-area">
+						<main id="main" class="site-main" role="main">
+							<!--							--><?php //query_posts('&cat=-4'); ?>
+							<?php
+							if ( have_posts() ) :
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+								if ( is_home() && ! is_front_page() ) : ?>
+									<header>
+										<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+									</header>
 
-			<?php
-			while ( have_posts() ) : the_post();
+									<?php
+								endif;
 
-				get_template_part( 'template-parts/content', 'page' );
+								/* Start the Loop */
 
-				// If comments are open or we have at least one comment, load up the comment template.
-				if ( comments_open() || get_comments_number() ) :
-					comments_template();
-				endif;
+								while ( have_posts() ) : the_post();
 
-			endwhile; // End of the loop.
-			?>
+									/*
+									 * Include the Post-Format-specific template for the content.
+									 * If you want to override this in a child theme, then include a file
+									 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+									 */
+									get_template_part( 'template-parts/content');
+									//
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
 
-<?php
-get_sidebar();
-get_footer();
+								endwhile; ?>
+
+								<div class="pagination">
+									<?php global $wp_query;
+
+									$big = 999999999; // need an unlikely integer
+
+									echo paginate_links(array(
+										'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
+										'format' => '?paged=%#%',
+										'total' => $wp_query->max_num_pages,
+										'prev_text' => '',
+										'next_text' => ''
+									));
+									?>
+								</div>
+
+
+
+							<?php else :
+
+								get_template_part( 'template-parts/content', 'none' );
+
+							endif; ?>
+						</main><!-- #main -->
+					</div><!-- #primary -->
+				</div>
+				<div class="col-sm-12 col-md-4">
+					<?php get_sidebar();?>
+				</div>
+			</div>
+		</div>
+	</section>
+<?php get_footer();

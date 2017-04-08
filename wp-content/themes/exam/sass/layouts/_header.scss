@@ -1,0 +1,11 @@
+.site-header {
+  padding: 40px 0 30px;
+  background: $header-color;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+

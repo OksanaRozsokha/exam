@@ -7,6 +7,345 @@
  * @package exam
  */
 
+/**
+ * Enqueue scripts and styles.
+ */
+function exam_scripts() {
+    wp_enqueue_style( 'exam-style', get_stylesheet_uri() );
+    wp_enqueue_style( 'exam-styles', get_template_directory_uri() . '/css/style.min.css?1');
+
+    wp_enqueue_script( 'exam-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+    wp_enqueue_script( 'exam-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+    wp_enqueue_script( 'exam-all-js', get_template_directory_uri() . '/js/all.min.js');
+
+
+    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+        wp_enqueue_script( 'comment-reply' );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'exam_scripts' );
+
+/**
+ * Register widget area.
+ *
+ * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
+ */
+function exam_widgets_init() {
+    register_sidebar( array(
+        'name'          => esc_html__( 'Sidebar', 'exam' ),
+        'id'            => 'sidebar-1',
+        'description'   => esc_html__( 'Add widgets here.', 'exam' ),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
+    register_sidebar( array(
+        'name'          => esc_html__( 'Sidebar', 'exam' ),
+        'id'            => 'sidebar-2',
+        'description'   => esc_html__( 'Add widgets here.', 'exam' ),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
+    register_sidebar( array(
+        'name'          => esc_html__( 'Sidebar', 'exam' ),
+        'id'            => 'sidebar-3',
+        'description'   => esc_html__( 'Add widgets here.', 'exam' ),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ) );
+    register_sidebar( array(
+        'name'          => 'footer area 1',
+        'id'            => 'footer-1',
+        'description'   => esc_html__( 'Add widgets here.', 'delivery' ),
+        'before_widget' => '<div class="widget-area">',
+        'after_widget'  => '</div>',
+
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+    register_sidebar( array(
+        'name'          => 'footer area 2',
+        'id'            => 'footer-2',
+        'description'   => esc_html__( 'Add widgets here.', 'delivery' ),
+        'before_widget' => '<div class="widget-area">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+    register_sidebar( array(
+        'name'          => 'footer area 3',
+        'id'            => 'footer-3',
+        'description'   => esc_html__( 'Add widgets here.', 'delivery' ),
+        'before_widget' => '<div class="widget-area">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+}
+add_action( 'widgets_init', 'exam_widgets_init' );
+
+
+//logo
+add_theme_support( 'custom-logo' );
+
+// thumbnails support
+add_theme_support('post-thumbnails');
+
+
+//field
+function hw_customize_register( $wp_customize ) {
+    //All our sections, settings, and controls will be added here
+
+//    social links
+//    $wp_customize->add_section( 'hw_social_links' , array(
+//        'title'      => __( 'Social links', 'hw' ),
+//        'priority'   => 30,
+//    ) );
+//
+//    $wp_customize->add_setting( 'social_links_facebook' , array(
+//        'default'     => '',
+//        'transport'   => 'refresh',
+//    ) );
+//
+//    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'social_links_facebook', array(
+//        'label'        => __( 'Facebook', 'hw' ),
+//        'section'    => 'hw_social_links',
+//        'settings'   => 'social_links_facebook',
+//    ) ) );
+//
+//    $wp_customize->add_setting( 'social_links_twitter' , array(
+//        'default'     => '',
+//        'transport'   => 'refresh',
+//    ) );
+//
+//    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'social_links_twitter', array(
+//        'label'        => __( 'Twitter', 'hw' ),
+//        'section'    => 'hw_social_links',
+//        'settings'   => 'social_links_twitter',
+//    ) ) );
+//
+//    $wp_customize->add_setting( 'social_links_google' , array(
+//        'default'     => '',
+//        'transport'   => 'refresh',
+//    ) );
+//
+//    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'social_links_google', array(
+//        'label'        => __( 'Google', 'hw' ),
+//        'section'    => 'hw_social_links',
+//        'settings'   => 'social_links_google',
+//    ) ) );
+//
+//
+//    $wp_customize->add_setting( 'social_links_color' , array(
+//        'default'     => '',
+//        'transport'   => 'refresh',
+//    ) );
+//
+//    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'social_links_color', array(
+//        'label'        => __( 'Social links background color', 'hw' ),
+//        'section'    => 'hw_social_links',
+//        'settings'   => 'social_links_color',
+//    ) ) );
+
+//    sections
+
+    $wp_customize->add_section( 'blog_title' , array(
+        'title'      => __( 'Blog title' ),
+        'priority'   => 20,
+    ) );
+    $wp_customize->add_setting( 'title' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'title', array(
+        'label' => 'title',
+        'section' => 'blog_title',
+        'settings'   => 'title',
+    ) ) );
+
+
+//    new section
+    $wp_customize->add_section( 'clients_section' , array(
+        'title'      => __( 'clients-section' ),
+        'priority'   => 20,
+    ) );
+    $wp_customize->add_setting( 'clients_title' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'clients_title', array(
+        'label' => 'Section`s title',
+        'section' => 'clients_section',
+        'settings'   => 'clients_title',
+    ) ) );
+
+
+//    new section
+    $wp_customize->add_section( 'why_us_section' , array(
+        'title'      => __( 'Why-us-section' ),
+        'priority'   => 20,
+    ) );
+    $wp_customize->add_setting( 'why_title' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'why_title', array(
+        'label' => 'Section`s title',
+        'section' => 'why_us_section',
+        'settings'   => 'why_title',
+    ) ) );
+
+
+
+    //    new section
+    $wp_customize->add_section( 'services_header' , array(
+        'title'      => __( 'services-header' ),
+        'priority'   => 20,
+    ) );
+    $wp_customize->add_setting( 'services_title' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'services_title', array(
+        'label' => 'Section`s title',
+        'section' => 'services_header',
+        'settings'   => 'services_title',
+    ) ) );
+    $wp_customize->add_setting( 'services_text' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'services_text', array(
+        'label' => 'Section`s text',
+        'section' => 'services_header',
+        'settings'   => 'services_text',
+    ) ) );
+
+
+    //    new section
+    $wp_customize->add_section( 'portfolio_header' , array(
+        'title'      => __( 'portfolio-header' ),
+        'priority'   => 20,
+    ) );
+    $wp_customize->add_setting( 'portfolio_title' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'portfolio_title', array(
+        'label' => 'Section`s title',
+        'section' => 'portfolio_header',
+        'settings'   => 'portfolio_title',
+    ) ) );
+    $wp_customize->add_setting( 'portfolio_text' , array(
+        'default'     => '',
+        'transport'   => 'refresh',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'portfolio_text', array(
+        'label' => 'Section`s text',
+        'section' => 'portfolio_header',
+        'settings'   => 'portfolio_text',
+    ) ) );
+
+
+}
+add_action( 'customize_register', 'hw_customize_register' );
+
+
+
+
+//SLIDER custom post type-----------------------------------------
+
+function clients_slides() {
+    $args = array(
+        'label' => 'clients-carousel',
+        'public' => true,
+        'show_ui' => true,
+        'capability_type' => 'post',
+        'hierarchical' => false,
+        'rewrite' => array('slug' => 'slides-clients'),
+        'query_var' => true,
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'trackbacks',
+            'custom-fields',
+            'comments',
+            'revisions',
+            'thumbnail',
+            'author',
+            'page-attributes',)
+    );
+    register_post_type( 'slides-clients', $args );
+}
+add_action( 'init', 'clients_slides' );
+//----------------------------------------------------------------------------------
+
+
+// Creates Movie Reviews Custom Post Type
+function services_reviews_init() {
+    $args = array(
+        'label' => 'Services',
+        'public' => true,
+        'show_ui' => true,
+        'capability_type' => 'post',
+        'hierarchical' => false,
+        'rewrite' => array('slug' => 'services-reviews'),
+        'query_var' => true,
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'trackbacks',
+            'custom-fields',
+            'comments',
+            'revisions',
+            'thumbnail',
+            'author',
+            'page-attributes',)
+    );
+    register_post_type( 'services-reviews', $args );
+}
+add_action( 'init', 'services_reviews_init' );
+
+function works_post_type() {
+    $args = array(
+        'label' => 'Our works',
+        'public' => true,
+        'show_ui' => true,
+        'capability_type' => 'post',
+        'hierarchical' => false,
+        'rewrite' => array('slug' => 'works'),
+        'query_var' => true,
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'trackbacks',
+            'custom-fields',
+            'comments',
+            'revisions',
+            'thumbnail',
+            'author',
+            'page-attributes',)
+    );
+    register_post_type( 'works', $args );
+}
+add_action( 'init', 'works_post_type' );
+
+
+
+
+
+
+
+//UNDESCORES FUNCTIONS
+
 if ( ! function_exists( 'exam_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -83,39 +422,7 @@ function exam_content_width() {
 }
 add_action( 'after_setup_theme', 'exam_content_width', 0 );
 
-/**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-function exam_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'exam' ),
-		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'exam' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-}
-add_action( 'widgets_init', 'exam_widgets_init' );
 
-/**
- * Enqueue scripts and styles.
- */
-function exam_scripts() {
-	wp_enqueue_style( 'exam-style', get_stylesheet_uri() );
-
-	wp_enqueue_script( 'exam-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-
-	wp_enqueue_script( 'exam-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'exam_scripts' );
 
 /**
  * Implement the Custom Header feature.

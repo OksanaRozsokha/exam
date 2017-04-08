@@ -1,0 +1,21 @@
+.main-navigation {
+  display: flex;
+  justify-content: flex-end;
+}
+.nav-menu {
+  li {
+    margin: 0 15px 15px 0;
+
+    &:hover {
+      a {
+        color: $brand-color;
+      }
+    }
+  }
+  a {
+    @include roboto(18px, 700);
+    color: $secondary-color;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+}

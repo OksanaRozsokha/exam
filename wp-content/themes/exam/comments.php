@@ -79,7 +79,22 @@ if ( post_password_required() ) {
 	<?php
 	endif;
 
-	comment_form();
+	comment_form(array(
+		'title_reply' => __( 'Leave a comment' ),
+		'title_reply_after' => '</h3><p class="comment-text">Submit your comments now</p>',
+		'label_submit' => __( 'Send Message' ),
+		'fields' => array(
+			'author' => '<p class="comment-form-author">' . '<label for="author">' . __( 'Name' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
+				'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . $html_req . ' /></p>',
+			'email'  => '<p class="comment-form-email"><label for="email">' . __( 'Email Address' ) . ( $req ? ' <span class="required">*</span>' : '' ) . '</label> ' .
+				'<input id="email" name="email" ' . ( $html5 ? 'type="email"' : 'type="text"' ) . ' value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" aria-describedby="email-notes"' . $aria_req . $html_req  . ' /></p>',
+//			'phone' => '<p class="comment-form-phone"><label for="phone">' . __( 'PHone number *' ) . '</label> ' .
+//				'<input id="phone" name="phone" ' . ( $html5 ? 'type="tel"' : 'type="tel"' ) . ' value="' . esc_attr( $commenter['comment_author_phone'] ) . '" size="30" /></p>',
+			'url'    => '<p class="comment-form-url"><label for="url">' . __( 'Website' ) . '</label> ' .
+				'<input id="url" name="url" ' . ( $html5 ? 'type="url"' : 'type="text"' ) . ' value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></p>',
+
+		),
+	));
 	?>
 
 </div><!-- #comments -->

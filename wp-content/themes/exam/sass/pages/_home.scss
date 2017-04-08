@@ -1,0 +1,99 @@
+.why-us {
+  padding: 70px 0;
+  background: $brand-color;
+
+  h2 {
+    @include roboto(48px, 700);
+    color: $secondary-color;
+    text-transform: uppercase;
+  }
+  h3 {
+    @include roboto(48px,400);
+    color: $secondary-color;
+    margin-bottom: 25px;
+  }
+  p {
+    @include roboto(18px, 300);
+    color: $secondary-color;
+    line-height: 22px;
+  }
+}
+
+.welcome {
+  padding-top: 60px;
+
+  .text {
+    margin-top: 50px;
+  }
+  h3 {
+    @include roboto(36px, 700);
+    color: $main-color;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  p {
+    @include roboto(18px, 700);
+    color: $main-color;
+    line-height: 22px;
+  }
+}
+.our-services {
+  padding: 70px 0;
+  background: $main-color;
+}
+.content-header {
+  margin-bottom: 50px;
+  h2 {
+    text-align: center;
+    color: $secondary-color;
+    @include roboto(24px,400);
+    margin-bottom: 20px;
+
+  }
+  p {
+    text-align: center;
+    color: $secondary-color;
+    @include roboto(18px,400);
+  }
+}
+.services-list {
+  li {
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  h3 {
+    margin: 20px 0 10px;
+    text-align: center;
+    color: $secondary-color;
+    @include roboto(24px,700);
+  }
+   p {
+     color: $secondary-color;
+     @include roboto(18px,400);
+     line-height: 22px;
+     text-align: center;
+   }
+}
+.portfolio {
+  padding: 60px 0;
+
+  .content-header {
+    margin-bottom: 50px;
+
+    h2 {
+      @include roboto(24px,400);
+      margin-bottom: 20px;
+      text-align: center;
+      color: $primary-color;
+    }
+    p {
+      @include roboto(18px,400);
+      text-align: center;
+      color: $primary-color;
+
+    }
+  }
+}
+
+

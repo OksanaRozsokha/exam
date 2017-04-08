@@ -1,0 +1,78 @@
+a {
+  transition-duration: .3s;
+}
+p {
+  @include roboto(18px, 400);
+  color: $main-color;
+  line-height: 24px;
+}
+.container {
+  width: 1163px;
+}
+
+//sidebar
+
+.aside-block {
+  padding: 40px 15px;
+  background: $main-color;
+  margin-bottom: 50px;
+  text-align: center;
+  h2 {
+    @include roboto(30px, 700);
+    text-transform: uppercase;
+    color: $secondary-color;
+    margin-bottom: 30px;
+  }
+
+
+}
+.search-form {
+  .search-field {
+    background: transparent;
+    padding: 15px;
+    width: 100%;
+  }
+  .search-submit {
+    display: none;
+  }
+
+}
+.widget_categories {
+  ul {
+    li {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+  }
+  a {
+    @include roboto(22px, 400);
+    color: $secondary-color;
+  }
+}
+
+.mc4wp-form {
+  input[type=email] {
+    background: transparent;
+    padding: 15px;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  input[type=submit] {
+    color: $secondary-color;
+    @include roboto(24px, 700);
+    text-transform: uppercase;
+    background: $brand-color;
+    padding: 15px 40px;
+    border: 1px solid $secondary-color;
+    border-radius: 0;
+    margin-bottom: 20px;
+  }
+}
+.widget-area {
+  margin-top: 25px;
+}
+.owl-carousel .owl-item img {
+  display: block;
+ width: auto;
+
+}

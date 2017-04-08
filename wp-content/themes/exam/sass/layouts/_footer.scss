@@ -1,0 +1,79 @@
+.featured-clients {
+  padding: 50px 0;
+  background: $brand-color;
+
+  h2 {
+    @include roboto(36px, 300);
+    color: $secondary-color;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+}
+.contact-us {
+ padding-top: 40px;
+ background: url("../img/contact-bg.png") top center no-repeat;
+ background-size: cover;
+
+  .widget-title {
+    @include roboto(36px, 300);
+    color: $secondary-color;
+    margin-bottom: 30px;
+  }
+  .textwidget {
+    @include roboto(18px, 300);
+    color: $secondary-color;
+    line-height: 24px;
+    margin-bottom: 60px;
+  }
+}
+.wpcf_nd {
+  .name-input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 0;
+  }
+}
+.wpcf_nd {
+  .email-input {
+    @extend .name-input;
+  }
+}
+.wpcf_nd {
+  .message-area {
+    @extend .name-input;
+    height: 300px;
+  }
+}
+.wpcf_nd {
+  .wpcf_nd_submit {
+    @include roboto(24px, 400);
+    border: none;
+    border-radius: 0;
+    color: $secondary-color;
+    padding: 10px 25px;
+    background: $brand-color;
+    margin-top: 15px;
+    text-transform: uppercase;
+  }
+
+}
+.top-footer {
+  padding: 20px 0;
+  background: $header-color;
+
+  h2 {
+    text-align: center;
+  }
+}
+.footer-bottom {
+  padding: 15px 0;
+  background: $brand-color;
+
+  .textwidget {
+    color: $secondary-color;
+    text-align: center;
+  }
+}
+

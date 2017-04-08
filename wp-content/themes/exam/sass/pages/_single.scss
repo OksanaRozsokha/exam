@@ -1,0 +1,52 @@
+.single-pages {
+  padding-bottom: 50px;
+
+  .post {
+    padding: 20px;
+  }
+
+  img {
+    float: left;
+    margin-bottom: 20px;
+  }
+
+  strong {
+    color: #f9690e;
+    font-size: 36px;
+  }
+
+  .nav-previous, .nav-next {
+     a {
+       color: #f9690e;
+       font-size: 18px;
+       text-transform: uppercase;
+     }
+  }
+  .entry-content {
+    p, h2 {
+      @include roboto(18px, 400);
+      color: $primary-color;
+      line-height: 22px;
+    }
+    h2 {
+      color: #f9690e;
+      font-size: 36px;
+      margin-top: 20px;
+    }
+
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

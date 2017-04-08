@@ -16,6 +16,7 @@
 
 	<div class="entry-content">
 		<?php
+		the_post_thumbnail('full', 'class=img-responsive');
 			the_content();
 
 			wp_link_pages( array(
